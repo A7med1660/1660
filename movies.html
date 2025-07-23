@@ -14,7 +14,7 @@
     }
 
     .overlay {
-      background-color: rgba(0, 0, 0, 0.3); /* شفافية أخف */
+      background-color: rgba(0, 0, 0, 0.3);
       min-height: 100vh;
       padding: 20px;
     }
@@ -39,10 +39,10 @@
     }
 
     .movies {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 15px;
-      justify-items: center;
+      justify-content: center;
     }
 
     .movie {
@@ -55,7 +55,7 @@
 
     .movie .poster {
       width: 100%;
-      padding-bottom: 100%; /* يخلي البوستر مربع */
+      padding-bottom: 100%;
       background-size: cover;
       background-position: center;
       border-radius: 10px;
@@ -63,7 +63,7 @@
 
     .movie h3 {
       margin: 10px 0;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .movie a {
@@ -100,7 +100,17 @@
         <a href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
       </div>
 
-      <!-- أضف المزيد من الأفلام بنفس الشكل -->
+      <div class="movie">
+        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/d/d1/The_Batman_%28film%29_poster.jpg');"></div>
+        <h3>The Batman</h3>
+        <a href="https://example.com/batman.mp4" target="_blank">تحميل</a>
+      </div>
+
+      <div class="movie">
+        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_No_Way_Home_poster.jpg');"></div>
+        <h3>Spider-Man: No Way Home</h3>
+        <a href="https://example.com/spiderman.mp4" target="_blank">تحميل</a>
+      </div>
     </div>
   </div>
 
