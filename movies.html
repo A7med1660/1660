@@ -1,50 +1,55 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>أفلام Joker Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joker Store Movies</title>
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #000;
-      color: #fff;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
       padding: 20px;
     }
     .movie {
-      display: inline-block;
-      width: 200px;
-      margin: 10px;
-      text-align: center;
+      background: #222;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 20px 0;
+      box-shadow: 0 0 5px #f00;
     }
     .movie img {
-      width: 100%;
+      width: 150px;
       border-radius: 10px;
     }
-    .movie button {
+    .movie h3 {
+      margin: 10px 0;
+    }
+    .movie a {
+      display: inline-block;
       margin-top: 10px;
+      color: #fff;
+      background: red;
       padding: 5px 10px;
-      background-color: #e50914;
-      color: white;
-      border: none;
       border-radius: 5px;
-      cursor: pointer;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <h1>🎬 Joker Store - أفلام</h1>
+  <h1>🎬 Joker Store - Movies</h1>
+
   <div class="movie">
-    <img src="https://via.placeholder.com/200x300?text=Film+1" alt="Film 1">
-    <p>اسم الفيلم 1</p>
-    <button onclick="window.location.href='https://example.com/film1.mp4'">تحميل</button>
+    <img src="https://via.placeholder.com/150" alt="Movie Poster" />
+    <h3>Movie Title 1</h3>
+    <a href="https://example.com/movie1.mp4" target="_blank">تحميل</a>
   </div>
 
   <div class="movie">
-    <img src="https://via.placeholder.com/200x300?text=Film+2" alt="Film 2">
-    <p>اسم الفيلم 2</p>
-    <button onclick="window.location.href='https://example.com/film2.mp4'">تحميل</button>
+    <img src="https://via.placeholder.com/150" alt="Movie Poster" />
+    <h3>Movie Title 2</h3>
+    <a href="https://example.com/movie2.mp4" target="_blank">تحميل</a>
   </div>
 
-  <!-- تقدر تضيف أفلام تانية بنفس الشكل فوق -->
 </body>
 </html>
