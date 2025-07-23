@@ -64,17 +64,23 @@
 </div>
 
 <script>
-  // بيانات الدخول (عدلهم زي ما تحب)
-  const allowedUser = {username: 'joker', password: '1234'};
-   const allowedUser = {username: 'ahmed', password: '1660'};
+  // قائمة المستخدمين (ضيف براحتك)
+  const allowedUsers = [
+    {username: 'joker', password: '1234'},
+    {username: 'ahmed', password: '5678'},
+    {username: 'guest', password: '0000'}
+  ];
 
   function handleLogin(){
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-    if(username === allowedUser.username && password === allowedUser.password){
+    // تحقق لو فيه يوزر مطابق
+    const user = allowedUsers.find(u => u.username === username && u.password === password);
+
+    if(user){
       localStorage.setItem('loggedUser', username);
-      window.location.href = './movies.html'; // تحويل للصفحة التانية
+      window.location.assign('movies.html');
     } else {
       alert('خطأ في اسم المستخدم أو كلمة المرور');
     }
