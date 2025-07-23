@@ -12,23 +12,15 @@
       background-size: cover;
       color: white;
     }
-
     .overlay {
       background-color: rgba(0, 0, 0, 0.3);
       min-height: 100vh;
       padding: 20px;
     }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .search {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
+    h1 { text-align: center; margin-bottom: 20px; }
+    .logout { text-align: center; margin-bottom: 20px; }
+    .logout button { padding:8px 15px; background:red; border:none; color:white; border-radius:5px; cursor:pointer; }
+    .search { text-align: center; margin-bottom: 20px; }
     .search input {
       padding: 10px;
       width: 80%;
@@ -37,35 +29,28 @@
       border: none;
       font-size: 16px;
     }
-
     .movies {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 15px;
-      justify-content: center;
+      justify-items: center;
     }
-
     .movie {
       background: rgba(20, 20, 20, 0.85);
       border-radius: 10px;
       padding: 10px;
-      width: 140px;
+      width: 100%;
+      max-width: 160px;
       text-align: center;
     }
-
-    .movie .poster {
+    .poster {
       width: 100%;
       padding-bottom: 100%;
       background-size: cover;
       background-position: center;
       border-radius: 10px;
     }
-
-    .movie h3 {
-      margin: 10px 0;
-      font-size: 14px;
-    }
-
+    .movie h3 { margin: 10px 0; font-size: 14px; }
     .movie a {
       display: inline-block;
       padding: 8px 12px;
@@ -75,15 +60,13 @@
       border-radius: 5px;
       font-weight: bold;
     }
-
-    .movie a:hover {
-      background: #cc0000;
-    }
+    .movie a:hover { background: #cc0000; }
   </style>
 </head>
 <body>
   <div class="overlay">
     <h1>🎬 JOKER STORE - أفلام</h1>
+    <div class="logout"><button onclick="logout()">تسجيل خروج</button></div>
     <div class="search">
       <input type="text" id="searchBox" placeholder="ابحث عن فيلم..." onkeyup="searchMovies()" />
     </div>
@@ -93,34 +76,28 @@
         <h3>Avengers: Endgame</h3>
         <a href="https://example.com/avengers.mp4" target="_blank">تحميل</a>
       </div>
-
-      <div class="movie">
-        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/5/53/John_Wick_Chapter_4_poster.jpg');"></div>
-        <h3>John Wick 4</h3>
-        <a href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
-      </div>
-
       <div class="movie">
         <div class="poster" style="background-image:url('https://media0081.elcinema.com/uploads/_640x_deea510acc3949f937460c0cc4bb7a5075d24715d4cc51296bca5f066913d5fb.jpg');"></div>
         <h3>سيكو سيكو</h3>
         <a href="https://www.mediafire.com/file/cpq7hl34h7dla3d/%255Barabseed%255D.Siko.Siko.2025.720p.WEB-DL.mp4/file" target="_blank">تحميل</a>
       </div>
-
       <div class="movie">
-        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/d/d1/The_Batman_%28film%29_poster.jpg');"></div>
-        <h3>The Batman</h3>
-        <a href="https://example.com/batman.mp4" target="_blank">تحميل</a>
-      </div>
-
-      <div class="movie">
-        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_No_Way_Home_poster.jpg');"></div>
-        <h3>Spider-Man: No Way Home</h3>
-        <a href="https://example.com/spiderman.mp4" target="_blank">تحميل</a>
+        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/5/53/John_Wick_Chapter_4_poster.jpg');"></div>
+        <h3>John Wick 4</h3>
+        <a href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
       </div>
     </div>
   </div>
 
   <script>
+    // منع الدخول بدون تسجيل
+    if(!localStorage.getItem('loggedUser')){
+      window.location.href = 'index.html';
+    }
+    function logout(){
+      localStorage.removeItem('loggedUser');
+      window.location.href = 'index.html';
+    }
     function searchMovies() {
       var input = document.getElementById('searchBox').value.toLowerCase();
       var movies = document.getElementsByClassName('movie');
