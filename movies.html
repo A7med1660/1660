@@ -43,12 +43,12 @@
       padding: 10px;
       text-align: center;
     }
-    .movie img {
-      width: 100%;
-      border-radius: 10px;
-      height: 250px;
-      object-fit: cover;
-    }
+   .movie img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* يخلي الصورة مربعة */
+  object-fit: cover;    /* يخلي الصورة تغطي الإطار كويس */
+  border-radius: 10px;
+}
     .movie h3 {
       margin: 10px 0;
     }
