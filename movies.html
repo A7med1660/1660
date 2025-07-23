@@ -13,17 +13,17 @@
       color: white;
     }
     .overlay {
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.4);
       min-height: 100vh;
       padding: 20px;
     }
     h1 { text-align: center; margin-bottom: 20px; }
     .logout { text-align: center; margin-bottom: 20px; }
-    .logout button { padding:8px 15px; background:red; border:none; color:white; border-radius:5px; cursor:pointer; }
+    .logout button { padding:8px 15px; background:red; border:none; color:white; border-radius:5px; cursor:pointer; font-size:14px; }
     .search { text-align: center; margin-bottom: 20px; }
     .search input {
       padding: 10px;
-      width: 80%;
+      width: 90%;
       max-width: 400px;
       border-radius: 5px;
       border: none;
@@ -31,7 +31,7 @@
     }
     .movies {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 15px;
       justify-items: center;
     }
@@ -59,8 +59,13 @@
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
+      font-size: 14px;
     }
     .movie a:hover { background: #cc0000; }
+    @media (max-width: 600px) {
+      .movie h3 { font-size:12px; }
+      .movie a { font-size:12px; padding:6px 10px; }
+    }
   </style>
 </head>
 <body>
@@ -77,11 +82,6 @@
         <a href="https://example.com/avengers.mp4" target="_blank">تحميل</a>
       </div>
       <div class="movie">
-        <div class="poster" style="background-image:url('https://media0081.elcinema.com/uploads/_640x_deea510acc3949f937460c0cc4bb7a5075d24715d4cc51296bca5f066913d5fb.jpg');"></div>
-        <h3>سيكو سيكو</h3>
-        <a href="https://www.mediafire.com/file/cpq7hl34h7dla3d/%255Barabseed%255D.Siko.Siko.2025.720p.WEB-DL.mp4/file" target="_blank">تحميل</a>
-      </div>
-      <div class="movie">
         <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/5/53/John_Wick_Chapter_4_poster.jpg');"></div>
         <h3>John Wick 4</h3>
         <a href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
@@ -92,11 +92,11 @@
   <script>
     // منع الدخول بدون تسجيل
     if(!localStorage.getItem('loggedUser')){
-      window.location.href = 'index.html';
+      window.location.href = './index.html';
     }
     function logout(){
       localStorage.removeItem('loggedUser');
-      window.location.href = 'index.html';
+      window.location.href = './index.html';
     }
     function searchMovies() {
       var input = document.getElementById('searchBox').value.toLowerCase();
