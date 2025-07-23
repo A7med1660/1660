@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: url("a7med.jpg") no-repeat center center fixed;
+      background: url("img/a7med.jpg") no-repeat center center fixed;
       background-size: cover;
       color: white;
     }
@@ -77,14 +77,14 @@
     </div>
     <div class="movies" id="movieList">
       <div class="movie">
-        <div class="poster" style="https://media0081.elcinema.com/uploads/_640x_deea510acc3949f937460c0cc4bb7a5075d24715d4cc51296bca5f066913d5fb.jpg');"></div>
+        <div class="poster" style="background-image:url('img/avengers.jpg');"></div>
         <h3>Avengers: Endgame</h3>
         <a href="https://example.com/avengers.mp4" target="_blank">تحميل</a>
       </div>
       <div class="movie">
-        <div class="poster" style="https://media0081.elcinema.com/uploads/_640x_deea510acc3949f937460c0cc4bb7a5075d24715d4cc51296bca5f066913d5fb.jpg');"></div>
-        <h3>سيكو سيكو</h3>
-        <a href="https://www.mediafire.com/file/cpq7hl34h7dla3d/%255Barabseed%255D.Siko.Siko.2025.720p.WEB-DL.mp4/file" target="_blank">تحميل</a>
+        <div class="poster" style="background-image:url('img/johnwick.jpg');"></div>
+        <h3>John Wick 4</h3>
+        <a href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
       </div>
     </div>
   </div>
@@ -92,11 +92,11 @@
   <script>
     // منع الدخول بدون تسجيل
     if(!localStorage.getItem('loggedUser')){
-      window.location.href = './index.html';
+      window.location.assign('index.html');
     }
     function logout(){
       localStorage.removeItem('loggedUser');
-      window.location.href = './index.html';
+      window.location.assign('index.html');
     }
     function searchMovies() {
       var input = document.getElementById('searchBox').value.toLowerCase();
