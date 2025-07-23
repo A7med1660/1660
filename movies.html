@@ -1,111 +1,99 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JOKER STORE - أفلام</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOKER STORE - Movies</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: url("a7med.jpg") no-repeat center center fixed;
       background-size: cover;
       color: white;
     }
-
     .overlay {
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.75);
       min-height: 100vh;
       padding: 20px;
     }
-
     h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .search {
       text-align: center;
       margin-bottom: 20px;
     }
-
-    #searchInput {
+    .search input {
+      padding: 10px;
       width: 80%;
       max-width: 400px;
-      padding: 10px;
-      font-size: 16px;
-      margin: 0 auto 30px;
-      display: block;
-      border-radius: 8px;
+      border-radius: 5px;
       border: none;
+      font-size: 16px;
     }
-
+    .movies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
     .movie {
-      background-color: rgba(255, 255, 255, 0.1);
+      background: #111;
       border-radius: 10px;
       padding: 10px;
-      margin: 15px;
-      width: 180px;
-      display: inline-block;
-      vertical-align: top;
       text-align: center;
     }
-
     .movie img {
       width: 100%;
       border-radius: 10px;
+      height: 250px;
+      object-fit: cover;
     }
-
-    .movie-title {
+    .movie h3 {
       margin: 10px 0;
-      font-weight: bold;
     }
-
-    .download-btn {
+    .movie a {
       display: inline-block;
-      padding: 8px 15px;
-      background-color: #00ccff;
-      color: black;
-      border: none;
-      border-radius: 5px;
+      padding: 10px 15px;
+      background: #ff0000;
+      color: white;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .download-btn:hover {
-      background-color: #00aacc;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <div class="overlay">
-    <h1>🎬 أفلام JOKER STORE</h1>
-    <input type="text" id="searchInput" placeholder="ابحث عن فيلم...">
-
-    <div id="moviesList">
-      <!-- مثال لفيلم -->
-      <div class="movie">
-        <img src="https://upload.wikimedia.org/wikipedia/en/8/81/Avengers_Endgame_poster.jpg" alt="Avengers" />
-        <div class="movie-title">Avengers: Endgame</div>
-        <a class="download-btn" href="https://example.com/avengers.mp4" target="_blank">تحميل</a>
-      </div>
-
-      <div class="movie">
-        <img src="https://upload.wikimedia.org/wikipedia/en/5/53/John_Wick_Chapter_4_poster.jpg" alt="John Wick 4" />
-        <div class="movie-title">John Wick 4</div>
-        <a class="download-btn" href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
-      </div>
-
-      <!-- أضف أفلام تانية بنفس الشكل فوق -->
+    <h1>🎬 JOKER STORE - أفلام</h1>
+    <div class="search">
+      <input type="text" id="searchBox" placeholder="ابحث عن فيلم..." onkeyup="searchMovies()" />
     </div>
-  </div>
-
-  <script>
-    // البحث
-    const searchInput = document.getElementById("searchInput");
-    searchInput.addEventListener("input", function () {
-      const filter = this.value.toLowerCase();
-      const movies = document.querySelectorAll(".movie");
-
-      movies.forEach(movie => {
-        const title = movie.querySelector(".movie-title").textContent.toLowerCase();
-        movie.style.display = title.includes(filter) ? "inline-block" : "none";
-      });
-    });
-  </script>
-</body>
+    <div class="movies" id="movieList">
+      <div class="movie">
+        <img src="https://via.placeholder.com/200x250" alt="Movie Poster">
+        <h3>فيلم 1</h3>
+        <a href="https://example.com/download1" target="_blank">تحميل</a>
+      </div>
+      <div class="movie">
+        <img src="https://via.placeholder.com/200x250" alt="Movie Poster">
+        <h3>فيلم 2</h3>
+        <a href="https://example.com/download2" target="_blank">تحميل</a>
+      </div>
+      <!-- تقدر تضيف المزيد من الأفلام هنا -->
+    </div>
+  </div>  <script>
+    function searchMovies() {
+      var input = document.getElementById('searchBox');
+      var filter = input.value.toLowerCase();
+      var movies = document.getElementsByClassName('movie');
+      for (var i = 0; i < movies.length; i++) {
+        var title = movies[i].getElementsByTagName("h3")[0];
+        if (title.innerText.toLowerCase().indexOf(filter) > -1) {
+          movies[i].style.display = "block";
+        } else {
+          movies[i].style.display = "none";
+        }
+      }
+    }
+  </script></body>
 </html>
