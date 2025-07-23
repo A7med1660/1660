@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Joker Store</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .login-box { background: #222; padding: 20px; border-radius: 10px; text-align: center; }
+    input { display: block; margin: 10px auto; padding: 10px; border: none; border-radius: 5px; width: 80%; }
+    button { padding: 10px 20px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Joker Store Login</h2>
+    <input type="text" id="username" placeholder="Username"/>
+    <input type="password" id="password" placeholder="Password"/>
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if(user === 'joker' && pass === '1234') {
+      if(user === 'ahmed' && pass === '1234') {
+        window.location.href = 'movies.html';
+      } else {
+        document.getElementById('error').innerText = "Invalid login!";
+      }
+    }
+  </script>
+</body>
+</html>
