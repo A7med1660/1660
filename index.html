@@ -47,57 +47,35 @@
       font-weight:bold;
     }
     button:hover {background:#cc0000;}
-    .toggle {margin-top:15px; cursor:pointer; color:#00ccff;}
   </style>
 </head>
 <body>
 <div class="overlay">
   <h1>JOKER STORE</h1>
   <div class="login-box">
-    <h3 id="formTitle">تسجيل الدخول</h3>
+    <h3>تسجيل الدخول</h3>
     <input type="text" id="username" placeholder="اسم المستخدم">
     <input type="password" id="password" placeholder="كلمة المرور">
     <button onclick="handleLogin()">دخول</button>
-    <div class="toggle" onclick="toggleMode()">إنشاء حساب جديد</div>
   </div>
 </div>
 
 <script>
-  // تخزين المستخدمين في LocalStorage للتجربة
-  if(!localStorage.getItem('users')){
-    localStorage.setItem('users', JSON.stringify([{username:'admin', password:'1234'}]));
-  }
+  // بيانات الدخول (عدلهم زي ما تحب)
+  const allowedUser = {username: 'joker', password: '1234'};
+  const allowedUser = {username: 'ahmed', password: '1660'};
 
-  let mode = 'login'; // login أو register
 
   function handleLogin(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    let users = JSON.parse(localStorage.getItem('users'));
 
-    if(mode === 'login'){
-      const user = users.find(u=>u.username===username && u.password===password);
-      if(user){
-        localStorage.setItem('loggedUser', username);
-        window.location.href = 'movies.html';
-      } else {
-        alert('خطأ في البيانات');
-      }
+    if(username === allowedUser.username && password === allowedUser.password){
+      localStorage.setItem('loggedUser', username);
+      window.location.href = 'movies.html';
     } else {
-      if(users.find(u=>u.username===username)){
-        alert('اسم المستخدم موجود بالفعل');
-      } else {
-        users.push({username, password});
-        localStorage.setItem('users', JSON.stringify(users));
-        alert('تم إنشاء الحساب بنجاح، يمكنك تسجيل الدخول الآن');
-        toggleMode();
-      }
+      alert('خطأ في اسم المستخدم أو كلمة المرور');
     }
-  }
-
-  function toggleMode(){
-    mode = (mode === 'login') ? 'register' : 'login';
-    document.getElementById('formTitle').innerText = (mode === 'login') ? 'تسجيل الدخول' : 'إنشاء حساب';
   }
 </script>
 </body>
