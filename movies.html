@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JOKER STORE - Movies</title>
+  <title>JOKER STORE - أفلام</title>
   <style>
     body {
       margin: 0;
@@ -11,19 +12,23 @@
       background-size: cover;
       color: white;
     }
+
     .overlay {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.3); /* شفافية أخف */
       min-height: 100vh;
-      padding: 50px;
+      padding: 20px;
     }
+
     h1 {
       text-align: center;
       margin-bottom: 30px;
     }
+
     .search {
       text-align: center;
       margin-bottom: 20px;
     }
+
     .search input {
       padding: 10px;
       width: 80%;
@@ -32,35 +37,47 @@
       border: none;
       font-size: 16px;
     }
+
     .movies {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
+      justify-items: center;
     }
+
     .movie {
-      background: #111;
+      background: rgba(20, 20, 20, 0.85);
       border-radius: 10px;
       padding: 10px;
+      width: 180px;
       text-align: center;
     }
-    .movie img {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
+
+    .movie .poster {
+      width: 100%;
+      padding-bottom: 100%; /* يخلي البوستر مربع */
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
     }
+
     .movie h3 {
       margin: 10px 0;
+      font-size: 16px;
     }
+
     .movie a {
       display: inline-block;
-      padding: 10px 15px;
+      padding: 8px 12px;
       background: #ff0000;
       color: white;
       text-decoration: none;
       border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .movie a:hover {
+      background: #cc0000;
     }
   </style>
 </head>
@@ -72,30 +89,30 @@
     </div>
     <div class="movies" id="movieList">
       <div class="movie">
-        <img src="https://via.placeholder.com/200x250" alt="Movie Poster">
-        <h3>فيلم 1</h3>
-        <a href="https://example.com/download1" target="_blank">تحميل</a>
+        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/8/81/Avengers_Endgame_poster.jpg');"></div>
+        <h3>Avengers: Endgame</h3>
+        <a href="https://example.com/avengers.mp4" target="_blank">تحميل</a>
       </div>
+
       <div class="movie">
-        <img src="https://via.placeholder.com/200x250" alt="Movie Poster">
-        <h3>فيلم 2</h3>
-        <a href="https://example.com/download2" target="_blank">تحميل</a>
+        <div class="poster" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/5/53/John_Wick_Chapter_4_poster.jpg');"></div>
+        <h3>John Wick 4</h3>
+        <a href="https://example.com/johnwick4.mp4" target="_blank">تحميل</a>
       </div>
-      <!-- تقدر تضيف المزيد من الأفلام هنا -->
+
+      <!-- أضف المزيد من الأفلام بنفس الشكل -->
     </div>
-  </div>  <script>
+  </div>
+
+  <script>
     function searchMovies() {
-      var input = document.getElementById('searchBox');
-      var filter = input.value.toLowerCase();
+      var input = document.getElementById('searchBox').value.toLowerCase();
       var movies = document.getElementsByClassName('movie');
       for (var i = 0; i < movies.length; i++) {
-        var title = movies[i].getElementsByTagName("h3")[0];
-        if (title.innerText.toLowerCase().indexOf(filter) > -1) {
-          movies[i].style.display = "block";
-        } else {
-          movies[i].style.display = "none";
-        }
+        var title = movies[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        movies[i].style.display = title.includes(input) ? "block" : "none";
       }
     }
-  </script></body>
+  </script>
+</body>
 </html>
